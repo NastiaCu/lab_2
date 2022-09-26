@@ -2,37 +2,28 @@ using System;
 
 namespace c{
 
-    class Waiter{
+    class Chief{
         private string name;
         private int age;
         private int work_experience;
-        private int grade;
-        private string orders;
-        private int count;
+        private int num_of_awards;
 
 
         public void setValues(){
-            Console.WriteLine("Enter the data of the waiter: ");
+            Console.WriteLine("Enter the data of the Chief: ");
             Console.WriteLine("Enter the name: ");
             name = Console.ReadLine();
             Console.WriteLine("Enter the age: ");
             age = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the work experience: ");
             work_experience = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the grade: ");
-            grade = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the number of Michelin stars: ");
+            num_of_awards = Convert.ToInt32(Console.ReadLine());
         }
 
         public void printValues(){
             System.Console.WriteLine(" name: " + name);
-            System.Console.WriteLine(" Work experience: " + work_experience);
+            Console.WriteLine(" Number of Michelin stars: " + num_of_awards);
         }
-
-        // Method to take the orders from the clients
-        public void takeOrders(){
-            orders = Console.ReadLine();
-            count++;
-        }
-
     }
 }
