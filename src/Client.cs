@@ -27,6 +27,7 @@ namespace c{
             money -= bill;
             return bill;
         }
+
         /*public void choose(Orders orders){
             KeyValuePair<string, int> drink = orders.pickDrink();
             Console.WriteLine("");
