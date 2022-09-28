@@ -3,27 +3,21 @@ using System;
 namespace c{
 
     class Administrator{
-        private string name;
-        private int age;
-        private int work_experience;
-        private int grade;
+        private Client client;
+        private Waiter waiter;
 
 
-        public void setValues(){
-            Console.WriteLine("Enter the data of the administrator: ");
-            Console.WriteLine("Enter the name: ");
-            name = Console.ReadLine();
-            Console.WriteLine("Enter the age: ");
-            age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the work experience: ");
-            work_experience = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the grade: ");
-            grade = Convert.ToInt32(Console.ReadLine());
+        public void grade(Client client, Waiter waiter){
+            Console.WriteLine("");
+            if (client.Happiness <= 2){
+                waiter.Grade--;
+                Console.WriteLine("The waiter now has a lower salary(");
+            }
+            else if (client.Happiness > 2){
+                waiter.Grade++;
+                Console.WriteLine("Good job!");
+            }
         }
 
-        public void printValues(){
-            System.Console.WriteLine(" name: " + name);
-            Console.WriteLine(" Work experience: " + work_experience);
-        }
     }
 }

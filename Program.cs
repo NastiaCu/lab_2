@@ -9,44 +9,32 @@ namespace c{
             Restaurant restaurant = new Restaurant("NK", "Studencheskaya street");
             restaurant.printValues();
 
-            Waiter waiter = new Waiter();
-            waiter.setValues();
-            waiter.printValues();
-            waiter.takeOrders();
-
-            Chief chief = new Chief();
-            chief.setValues();
-            chief.printValues();
-
-            Barman barman = new Barman();
-            barman.setValues();
-            barman.printValues();
-
-            Administrator administrator = new Administrator();
-            administrator.setValues();
-            administrator.printValues();
-
-            Cleaners cleaners = new Cleaners();
-            cleaners.setValues();
-            cleaners.printValues();
-
-
-            Security security = new Security();
-            security.setValues();
-            security.printValues();
-
-            Reception reception = new Reception();
-            reception.setValues();
-            reception.printValues();
-
             Menu menu = new Menu();
-            menu.setValues();
-            menu.printValues();
+            menu.createMain();
+            menu.createSup();
+            menu.createDrink();
 
             Orders orders = new Orders();
-            orders.setValues("pizza", 100);
-            orders.printValues();
+            orders.pickMain();
+            orders.pickSup();
+            orders.pickDrink();
 
+            Client client = new Client();
+
+            Waiter waiter = new Waiter();
+            // waiter.takeOrders();
+
+            Barman barman = new Barman();
+            barman.makeDrink(orders);
+
+            Chief chief = new Chief();
+            chief.cook(orders);
+
+            Cleaners cleaners = new Cleaners();
+            cleaners.cleaning(client);
+
+            Administrator administrator = new Administrator();
+            administrator.grade(client, waiter);
 
         }
 

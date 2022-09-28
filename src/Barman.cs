@@ -3,21 +3,32 @@ using System;
 namespace c{
 
     class Barman{
-        private string name;
-        private int age;
-        private int work_experience;
+        private int grade;
+        private Waiter waiter;
+        private Orders orders;
+        private int num_drinks;
 
-
-        public void setValues(){
-            Console.WriteLine("Enter name, age and work experience of the Barman: ");
-            name = Console.ReadLine();
-            age = Convert.ToInt32(Console.ReadLine());
-            work_experience = Convert.ToInt32(Console.ReadLine());
+        public int Grade{
+            get { return grade; }
+            set { grade = value; } 
         }
 
-        public void printValues(){
-            System.Console.WriteLine(" name: " + name);
-            Console.WriteLine(" Work experience: " + work_experience);
+        public int Num_Drinks{
+            get { return num_drinks; }
+            set { num_drinks = value; } 
         }
+
+        public void makeDrink(Orders orders){
+            KeyValuePair<string, int> drink = orders.pickDrink();
+            Console.WriteLine("");
+            Console.WriteLine("Barman served a ");
+            orders.pickDrink();
+            Console.WriteLine(drink);
+            num_drinks++;
+
+        }
+
+
+       
     }
 }

@@ -3,23 +3,29 @@ using System;
 namespace c{
 
     class Cleaners{
-        string name;
-        int age;
-        int work_experience;
-
-        public void setValues(){
-            Console.WriteLine("Enter the data of the cleaner: ");
-            Console.WriteLine("Enter the name: ");
-            name = Console.ReadLine();
-            Console.WriteLine("Enter the age: ");
-            age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the work experience: ");
-            work_experience = Convert.ToInt32(Console.ReadLine());
+        private Table table;
+        private Client client;
+        private int clean;
+        
+        public int Clean{
+            get { return clean; }
+            set { clean = value; } 
         }
 
-        public void printValues(){
-            Console.WriteLine("Name: " + name);
-            Console.WriteLine("Work experience " + work_experience);
+        public void cleaning(Client client){
+            Console.WriteLine("");
+            Random rand = new Random();
+            clean = rand.Next(1, 3);
+            if (clean == 1){
+                client.Happiness--;
+                Console.WriteLine("Very bad!");
+            }
+            else if (clean == 2){
+                client.Happiness++;
+                Console.WriteLine("Nice!");
+            }
+
         }
+       
     }
 }

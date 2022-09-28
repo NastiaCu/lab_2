@@ -3,35 +3,29 @@ using System;
 namespace c{
 
     class Waiter{
-        private string name;
-        private int age;
-        private int work_experience;
-        private int grade;
-        private string orders;
-        private int count;
+        public int grade = 10;
+        private Orders orders;
+        private int num_orders = 0;
+        private Chief chief;
+        private Client client;
 
 
-        public void setValues(){
-            Console.WriteLine("Enter the data of the waiter: ");
-            Console.WriteLine("Enter the name: ");
-            name = Console.ReadLine();
-            Console.WriteLine("Enter the age: ");
-            age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the work experience: ");
-            work_experience = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the grade: ");
-            grade = Convert.ToInt32(Console.ReadLine());
+        public int Grade{
+            get { return grade; }
+            set { grade = value; }
         }
 
-        public void printValues(){
-            System.Console.WriteLine(" name: " + name);
-            System.Console.WriteLine(" Work experience: " + work_experience);
+        public int Num_Orders{
+            get { return num_orders; }
+            set { num_orders = value; }
         }
 
         // Method to take the orders from the clients
-        public void takeOrders(){
-            orders = Console.ReadLine();
-            count++;
+        public void takeOrders(Orders orders){
+            orders.pickMain();
+            orders.pickSup();
+            orders.pickDrink();
+            num_orders++;
         }
 
     }

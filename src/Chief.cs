@@ -3,27 +3,40 @@ using System;
 namespace c{
 
     class Chief{
-        private string name;
-        private int age;
-        private int work_experience;
-        private int num_of_awards;
+        private Orders orders;
+        public int grade;
+        private string main;
+        private string supplies;
 
-
-        public void setValues(){
-            Console.WriteLine("Enter the data of the Chief: ");
-            Console.WriteLine("Enter the name: ");
-            name = Console.ReadLine();
-            Console.WriteLine("Enter the age: ");
-            age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the work experience: ");
-            work_experience = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter the number of Michelin stars: ");
-            num_of_awards = Convert.ToInt32(Console.ReadLine());
+        public int Grade{
+            get { return grade; }
+            set { grade = value; } 
         }
 
-        public void printValues(){
-            System.Console.WriteLine(" name: " + name);
-            Console.WriteLine(" Number of Michelin stars: " + num_of_awards);
+        public string Main{
+            get { return main; }
+            set { main = value; } 
         }
+
+        public string Supplies{
+            get { return supplies; }
+            set { supplies = value; } 
+        }
+
+        public void cook(Orders orders){
+            KeyValuePair<string, int> main = orders.pickMain();
+            KeyValuePair<string, int> sup = orders.pickSup();
+
+            Console.WriteLine("");
+            Console.WriteLine("Chief cooked ");
+            orders.pickMain();
+            Console.WriteLine(main);
+            orders.pickSup();
+            Console.WriteLine(sup);
+
+        }
+
+
+       
     }
 }
