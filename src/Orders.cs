@@ -1,65 +1,43 @@
 using System;
 
 namespace c{
+    class Orders: Menu{
 
-    class Orders{
-        private KeyValuePair<string, int> main;
-        private KeyValuePair<string, int> sup;
-        private KeyValuePair<string, int> drink;
+        public KeyValuePair<string, int> chosenMain;
+        public KeyValuePair<string, int> chosenSup;
+        public KeyValuePair<string, int> chosenDrink;
 
-        public KeyValuePair<string, int> pickMain(){
+        public KeyValuePair<string, int> randomMain(){
             Random random = new Random();
-            Dictionary<string, int> dictionary = new Dictionary<string, int>(){
-                                                                                {"chicken", 90},
-                                                                                {"steak", 180},
-                                                                                {"burger", 85},
-                                                                                {"pizza", 140}};
+            Dictionary<string, int> randMain = this.createMain();
+            KeyValuePair<string, int> randMainEntry = randMain.ElementAt(random.Next(0, randMain.Count));
+            Console.WriteLine(randMainEntry);
 
-            int index = random.Next(dictionary.Count);
+            chosenMain = randMainEntry;
 
-            string key = dictionary.Keys.ElementAt(index);
-            int value = dictionary.Values.ElementAt(index);
+            return randMainEntry;
+        } 
 
-            KeyValuePair<string, int> main = dictionary.ElementAt(index);
-            return main;
-            // Console.WriteLine(main);
-        }
-
-        public KeyValuePair<string, int> pickSup(){
+        public KeyValuePair<string, int> randomSup(){
             Random random = new Random();
-            Dictionary<string, int> dictionary = new Dictionary<string, int>(){
-                                                                                {"fries", 50},
-                                                                                {"placinte cu brinza", 40},
-                                                                                {"salad", 60},
-                                                                                {"bread", 10}};  
+            Dictionary<string, int> randSup = this.createSup();
+            KeyValuePair<string, int> randSupEntry = randSup.ElementAt(random.Next(0, randSup.Count));
+            Console.WriteLine(randSupEntry);
 
-            int index = random.Next(dictionary.Count);
+            chosenSup = randSupEntry;
 
-            string key = dictionary.Keys.ElementAt(index);
-            int value = dictionary.Values.ElementAt(index);
+            return randSupEntry;
+        } 
 
-            KeyValuePair<string, int> sup = dictionary.ElementAt(index);
-            return sup;
-            // Console.WriteLine(sup);
-        }
-
-        public KeyValuePair<string, int> pickDrink(){
-
+        public KeyValuePair<string, int> randomDrink(){
             Random random = new Random();
-            Dictionary<string, int> dictionary = new Dictionary<string, int>(){
-                                                                                {"coca-cola", 25},
-                                                                                {"orange juice", 50},
-                                                                                {"beer", 50},
-                                                                                {"lemonade", 50}};
+            Dictionary<string, int> randDrink = this.createDrink();
+            KeyValuePair<string, int> randDrinkEntry = randDrink.ElementAt(random.Next(0, randDrink.Count));
+            Console.WriteLine(randDrinkEntry);
 
-            int index = random.Next(dictionary.Count);
+            chosenDrink = randDrinkEntry;
 
-            string key = dictionary.Keys.ElementAt(index);
-            int value = dictionary.Values.ElementAt(index);
-
-            KeyValuePair<string, int> drink = dictionary.ElementAt(index);
-            return drink;
-            //Console.WriteLine(drink);
-        }
+            return randDrinkEntry;
+        }         
     }
 }

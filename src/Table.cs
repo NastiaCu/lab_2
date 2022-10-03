@@ -1,47 +1,47 @@
 using System;
 
 namespace c{
-    class Table{
-        private int Quality ;
+    class Table: Restaurant{
+        private int quality ;
         
-        public int quality{
-            get { return Quality; }
-            set { Quality = value; } 
+        public int Quality{
+            get { return this.quality; }
+            set { this.quality = value; } 
         }
 
         public int table(Client client){
             Random rand = new Random();
-            Quality = rand.Next(1, 5);
-            return  Quality;
+            this.quality = rand.Next(1, 5);
+            return  this.quality;
         }
 
-        public void TableQuality(int Quality, Client client){
-            if (Quality == 0){
+        public void TableQuality(int quality, Client client){
+            if (this.quality == 0){
                 client.Happiness -= 3;
                 Console.WriteLine("Client is going to kill someone!");
             }
 
-            else if (Quality == 1){
+            else if (quality == 1){
                 client.Happiness -= 2;
                 Console.WriteLine("Client is really angry");
             }
 
-            else if (Quality == 2){
+            else if (quality == 2){
                 client.Happiness -= 1;
                 Console.WriteLine("Client is mad");
             }
 
-            else if (Quality == 3){
+            else if (quality == 3){
                 client.Happiness += 1;
                 Console.WriteLine("Client is chill");
             }
 
-            if (Quality == 4){
+            if (quality == 4){
                 client.Happiness += 2;
                 Console.WriteLine("Client is satisfied");
             }
 
-            if (Quality == 5){
+            if (quality == 5){
                 client.Happiness += 3;
                 Console.WriteLine("Client is really happy!");
             }

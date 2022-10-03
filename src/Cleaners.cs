@@ -2,30 +2,20 @@ using System;
 
 namespace c{
 
-    class Cleaners{
-        private Table table;
-        private Client client;
+    class Cleaners: LowLevel{
+
         private int clean;
+        new protected int Salary = 3000;
+
+        public Cleaners(string name, string status): base(name , status){
+            setValues(name, status);
+        }
         
         public int Clean{
             get { return clean; }
             set { clean = value; } 
         }
 
-        public void cleaning(Client client){
-            Console.WriteLine("");
-            Random rand = new Random();
-            clean = rand.Next(1, 3);
-            if (clean == 1){
-                client.Happiness--;
-                Console.WriteLine("Very bad!");
-            }
-            else if (clean == 2){
-                client.Happiness++;
-                Console.WriteLine("Nice!");
-            }
-
-        }
-       
+        
     }
 }

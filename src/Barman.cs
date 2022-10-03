@@ -2,33 +2,26 @@ using System;
 
 namespace c{
 
-    class Barman{
-        private int grade;
-        private Waiter waiter;
-        private Orders orders;
+    class Barman: LowLevel{
         private int num_drinks;
-
-        public int Grade{
-            get { return grade; }
-            set { grade = value; } 
-        }
 
         public int Num_Drinks{
             get { return num_drinks; }
             set { num_drinks = value; } 
         }
 
+        public Barman(string name, string status): base(name , status){
+            setValues(name, status);
+        }
+
         public void makeDrink(Orders orders){
-            KeyValuePair<string, int> drink = orders.pickDrink();
+            KeyValuePair<string, int> BarmanServed = orders.chosenDrink;
+
             Console.WriteLine("");
-            Console.WriteLine("Barman served a ");
-            orders.pickDrink();
-            Console.WriteLine(drink);
+            Console.WriteLine("Barman serverd: ");
+            Console.WriteLine(BarmanServed);
             num_drinks++;
 
         }
-
-
-       
     }
 }

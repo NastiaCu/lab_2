@@ -2,20 +2,15 @@ using System;
 
 namespace c{
 
-    class Chief{
-        private Orders orders;
-        public int grade;
+    class Chief: LowLevel{
         private string main;
         private string supplies;
-
-        public int Grade{
-            get { return grade; }
-            set { grade = value; } 
-        }
+        new protected int Salary = 5000;
 
         public string Main{
             get { return main; }
             set { main = value; } 
+
         }
 
         public string Supplies{
@@ -23,20 +18,23 @@ namespace c{
             set { supplies = value; } 
         }
 
+        public Chief(string name, string status): base(name, status){
+            setValues(name, status);
+        }
+
         public void cook(Orders orders){
-            KeyValuePair<string, int> main = orders.pickMain();
-            KeyValuePair<string, int> sup = orders.pickSup();
+
+            KeyValuePair<string, int> chiefCookedMain = orders.chosenMain;
+            KeyValuePair<string, int> chiefCookedSup = orders.chosenSup;
 
             Console.WriteLine("");
+
             Console.WriteLine("Chief cooked ");
-            orders.pickMain();
-            Console.WriteLine(main);
-            orders.pickSup();
-            Console.WriteLine(sup);
+            Console.WriteLine(chiefCookedMain);
+            Console.WriteLine(chiefCookedSup);
 
         }
 
 
-       
     }
 }

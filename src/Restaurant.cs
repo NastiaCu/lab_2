@@ -4,24 +4,19 @@ namespace c{
 
     class Restaurant{
 
-        private string name;
+        protected string name;
 
-        private string adress;
+        protected string adress;
 
 
-        public Restaurant(string _name, string _adress){
-            System.Console.WriteLine("Object has been created");
-            setValues(_name, _adress);
-        }
-        
-
-        public void setValues(string _name, string _adress){
-            name = _name;
-            adress = _adress;
+        public void setValues(string name, string adress){
+            this.name = name;
+            this.adress = adress;
         }
 
         public void printValues(){
-            System.Console.WriteLine(" name: " + name + " adress: " + adress);
+            System.Console.WriteLine("Name of the restaurant: " + name );
+            System.Console.WriteLine("Adress of the restaurants: " + adress);
         }
     }
 }

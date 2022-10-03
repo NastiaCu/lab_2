@@ -1,31 +1,41 @@
 using System;
+using System.Collections.Generic;
+
 
 namespace c{
 
-    class Waiter{
-        public int grade = 10;
-        private Orders orders;
-        private int num_orders = 0;
-        private Chief chief;
-        private Client client;
+    class Waiter: LowLevel{
+
+        protected int Main;
+        protected int Sup;
+        protected int Drink;
+        public int ToPay;
+        new public int Salary = 4000;
 
 
-        public int Grade{
-            get { return grade; }
-            set { grade = value; }
+        public Waiter(string name, string status): base(name, status){
+            name = this.name;
+            setValues(name, status);
         }
 
-        public int Num_Orders{
-            get { return num_orders; }
-            set { num_orders = value; }
+        public override void speak(){
+            base.speak();
+            Console.WriteLine("What would you like to order?");
         }
+        
 
-        // Method to take the orders from the clients
-        public void takeOrders(Orders orders){
-            orders.pickMain();
-            orders.pickSup();
-            orders.pickDrink();
-            num_orders++;
+        public void bill(Client client, Orders orders){
+
+            KeyValuePair<string, int> MainDish = orders.chosenMain;
+            KeyValuePair<string, int> Supplies = orders.chosenSup;
+            KeyValuePair<string, int> DrinkM = orders.chosenDrink;
+
+            Main = MainDish.Value;
+            Sup = Supplies.Value;
+            Drink = DrinkM.Value;
+            ToPay = Main + Sup + Drink;
+            Console.WriteLine("The total bill is " + ToPay);
+
         }
 
     }

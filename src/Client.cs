@@ -2,11 +2,16 @@ using System;
 
 namespace c{
 
-    class Client{
-        private Waiter water;
-        private int money;
-        private int happiness = 2;
-        private int num = 3;
+    class Client: HighLevel{
+        
+        protected int money = 200;
+        protected int happiness = 2;
+        protected int num = 3;
+        
+
+        public Client(string name, string status): base(name , status){
+            setValues(name, status);
+        }
 
         public int Money{
             get { return money; }
@@ -23,18 +28,19 @@ namespace c{
             set { num = value; }
         }
 
-        public int pay(int bill){
+        public void pay(int bill){
             money -= bill;
-            return bill;
+            Console.WriteLine("remained cash " + money + "$");
         }
 
-        /*public void choose(Orders orders){
-            KeyValuePair<string, int> drink = orders.pickDrink();
+        public void choose(Orders orders){
             Console.WriteLine("");
-            Console.WriteLine("Client chose a ");
-            orders.pickDrink();
-            Console.WriteLine(drink);
-        }*/
+            Console.WriteLine("The client chose: ");
+            orders.randomMain();
+            orders.randomSup();
+            orders.randomDrink();
+           
+        }
 
     }
 }

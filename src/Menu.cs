@@ -4,20 +4,30 @@ using System.Linq;
 
 namespace c{
 
-    class Menu{
+    class Menu: Restaurant{
         
-        Dictionary<string, int> Main_menu = new Dictionary<string, int>();
-        Dictionary<string, int> Sup_menu = new Dictionary<string, int>();
-        Dictionary<string, int> Drink_menu = new Dictionary<string, int>();
+        public Dictionary<string, int> Main_menu { get; set; }
+        public Dictionary<string, int> Sup_menu { get; set; }
+        public Dictionary<string, int> Drink_menu { get; set; }
         
 
-        public void createMain(){
+        public Dictionary<string, int> createMain(){
             Dictionary<string, int> Main_menu = new Dictionary<string, int>(){
                                                                                 {"chicken", 90},
                                                                                 {"steak", 180},
                                                                                 {"burger", 85},
                                                                                 {"pizza", 140}};  
-            
+            return Main_menu;
+            }   
+
+        public void dispMain(){
+
+            Dictionary<string, int> Main_menu = new Dictionary<string, int>(){
+                                                                                {"chicken", 90},
+                                                                                {"steak", 180},
+                                                                                {"burger", 85},
+                                                                                {"pizza", 140}};
+
             Console.WriteLine();
             Console.WriteLine("Main menu:");
             Console.WriteLine();
@@ -26,16 +36,24 @@ namespace c{
                 Console.WriteLine("{0} - {1}", el.Key, el.Value);
             }
 
-
         }
 
-        public void createSup(){
+        public Dictionary<string, int> createSup(){
             Dictionary<string, int> Sup_menu = new Dictionary<string, int>(){
                                                                                 {"fries", 50},
                                                                                 {"placinte cu visina", 40},
                                                                                 {"salad", 60},
                                                                                 {"bread", 10}};  
-            
+            return Sup_menu;
+        }
+
+        public void dispSup(){
+            Dictionary<string, int> Sup_menu = new Dictionary<string, int>(){
+                                                                                {"fries", 50},
+                                                                                {"placinte cu visina", 40},
+                                                                                {"salad", 60},
+                                                                                {"bread", 10}};  
+
             Console.WriteLine();
             Console.WriteLine("Supplies menu:");
             Console.WriteLine();
@@ -44,17 +62,25 @@ namespace c{
                 Console.WriteLine("{0} - {1}", el.Key, el.Value);
             }
 
-            List<KeyValuePair<string, int>> list_sup = Sup_menu.ToList();
-
         }
 
-        public void createDrink(){
+        public Dictionary<string, int> createDrink(){
             Dictionary<string, int> Drink_menu = new Dictionary<string, int>(){
                                                                                 {"coca-cola", 25},
                                                                                 {"orange juice", 50},
                                                                                 {"beer", 50},
                                                                                 {"lemonade", 50}};  
-            
+            return Drink_menu;
+        }
+
+        public void dispDrink(){
+
+            Dictionary<string, int> Drink_menu = new Dictionary<string, int>(){
+                                                                                {"coca-cola", 25},
+                                                                                {"orange juice", 50},
+                                                                                {"beer", 50},
+                                                                                {"lemonade", 50}};
+
             Console.WriteLine();
             Console.WriteLine("Drink menu:");
             Console.WriteLine();
@@ -62,8 +88,9 @@ namespace c{
             foreach(KeyValuePair<string, int> el in Drink_menu){
                 Console.WriteLine("{0} - {1}", el.Key, el.Value);
             }
+            
+            Console.WriteLine();
 
-            List<KeyValuePair<string, int>> list_drink = Drink_menu.ToList();
         }
     }   
 }

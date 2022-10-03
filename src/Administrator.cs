@@ -2,11 +2,12 @@ using System;
 
 namespace c{
 
-    class Administrator{
-        private Client client;
-        private Waiter waiter;
+    class Administrator: HighLevel{
 
-
+        public Administrator(string name, string status): base(name, status){
+            setValues(name, status);
+        }
+        
         public void grade(Client client, Waiter waiter){
             Console.WriteLine("");
             if (client.Happiness <= 2){
