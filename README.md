@@ -10,7 +10,7 @@ Class `Person` is the intermediate class, which has the properties for all actor
 
 I used overriding for some methods to make them more speciefic for different classes. Root has a `Menu` child class, which has `Orders` as a child class.
 
-I decided to make a restaurant simulation. For now it contains 10 classes: `Waiter`, `Client`, `Chief`, `Administrator`, `Table`, `Cleaner`, `Security`, `Barman`, `Menu` and `Orders`. 
+Short description of the system componemts: 
 
 `Waiter` will have methods to `serve the client`, to `take orders`, to `bring the bill` and to `send orders to the chief`.
 
