@@ -28,4 +28,6 @@ The `Cleaners` will influence client's level of happiness by cleaning the tables
 
 `Orders` is the class which has such methods as `pickMain`, `pickSup` and `pickDrink`, which create orders randomly. 
 
+<img width="995" alt="Graph" src="https://user-images.githubusercontent.com/96084704/193827168-1f3f52dd-bb54-48d2-bd78-9822c257d7e5.png">
+
 <img width="995" alt="Graph" src="https://user-images.githubusercontent.com/96084704/193654810-429213c5-082a-4546-8007-e2ce62ca6dbf.png">
