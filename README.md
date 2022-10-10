@@ -8,7 +8,7 @@ Class `Person` is the intermediate class, which has the properties for all actor
 
 `HighLevel` is the class parent for the classes, that have a value in the system, such as `Administrator`, `Client` and `Security`. The `LowLevel` class is the class parent for the service stuff such as `Waiter`, `Chief`, `Barman` and `Cleaners`.
 
-To use the polymorphism in this laboratory work I added interfaces, which are implemeted in classesI used overriding for some methods to make them more speciefic for different classes. Parent class `Person` has a method `speak` which is inherited by all the child classes. I overrided this method for different classes to clearly identify the roles. Also I made a `WhatSalary` method in the `HighLevel` class, which is inherited and overrided in `Administrator` class. Root has a `Menu` child class, which has `Orders` as a child class.
+To use the polymorphism in this laboratory work I added interfaces, which are implemeted in classes. I used overriding for some methods to make them more speciefic for different classes. Parent class `Person` has a method `speak` which is inherited by all the child classes. I overrided this method for different classes to clearly identify the roles. Also I made a `WhatSalary` method in the `HighLevel` class, which is inherited and overrided in `Administrator` class. Root has a `Menu` child class, which has `Orders` as a child class.
 
 Short description of the system componemts: 
 
