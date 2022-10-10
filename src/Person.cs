@@ -1,7 +1,7 @@
 using System;
 
 namespace c{
-    abstract class Person: Restaurant, IPerson{
+    class Person: Restaurant, IPerson{
 
         new protected string name;
         protected int workExperience;
