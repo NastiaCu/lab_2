@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace c{
 
-    class Menu: Restaurant{
+    class Menu: Restaurant, IMenu{
         
         public Dictionary<string, int> Main_menu { get; set; }
         public Dictionary<string, int> Sup_menu { get; set; }

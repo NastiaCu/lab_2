@@ -1,8 +1,8 @@
 using System;
 
 namespace c{
-    class Table: Restaurant{
-        private int quality ;
+    class Table: Restaurant, ITable{
+        public int quality ;
         
         public int Quality{
             get { return this.quality; }
@@ -11,11 +11,11 @@ namespace c{
 
         public int table(Client client){
             Random rand = new Random();
-            this.quality = rand.Next(1, 5);
+            this.quality = rand.Next(1, 6);
             return  this.quality;
         }
 
-        public void TableQuality(int quality, Client client){
+        public void TableQuality(Client client){
             if (this.quality == 0){
                 client.Happiness -= 3;
                 Console.WriteLine("Client is going to kill someone!");

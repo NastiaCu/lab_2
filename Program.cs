@@ -10,6 +10,8 @@ namespace c{
             Menu menu = new Menu();
             Orders orders = new Orders();
             Table table = new Table();
+            
+        
             Client client = new Client("Client", "client");
             Waiter waiter = new Waiter("John", "Waiter");
             Barman barman = new Barman("Mike", "Barman");
@@ -18,6 +20,9 @@ namespace c{
             Administrator administrator = new Administrator("IRA", "Administrator");
             Security secutity = new Security("Calin", "Security");
 
+            table.table(client);
+
+            // table.TableQuality(client);
             restaurant.setValues("NK", "Studencheskaya street");
             restaurant.printValues();
             
@@ -30,19 +35,19 @@ namespace c{
 
             waiter.speak();
             client.choose(orders);
-            chief.cook(orders);
+            
             barman.makeDrink(orders);
-
-            waiter.qualityCheck(client);
+            barman.speak();
+            barman.qualityCheck(client, "Barman");
+            
+            chief.cook(orders);
+            chief.qualityCheck(client, "Chief");
+            chief.speak();
+            
+            waiter.qualityCheck(client, "Waiter");
             waiter.bill(client, orders);
 
-            barman.speak();
-            barman.qualityCheck(client);
-
-            chief.speak();
-            chief.qualityCheck(client);
-
-            cleaners.qualityCheck(client);
+            cleaners.qualityCheck(client, "Cleaner");
 
             administrator.speak();
             administrator.grade(client, waiter);
@@ -53,10 +58,20 @@ namespace c{
             secutity.washDishes(client);
             cleaners.speak();
 
-            administrator.whatSalary("cleaner", table, cleaners);
-            administrator.whatSalary("waiter", table, waiter);
-            administrator.whatSalary("chief", table, chief);
-     
+            administrator.whatSalary("cleaner", cleaners, cleaners.rating);
+            administrator.whatSalary("waiter", waiter, waiter.rating);
+            administrator.whatSalary("chief", chief, chief.rating);
+            administrator.whatSalary("barman", barman, barman.rating);
+
+
+            Console.WriteLine("");
+
+            table.TableQuality(client);
+            Console.WriteLine(table.quality);
+
+            
+        
+    
         }
 
     } 

@@ -20,5 +20,14 @@ namespace c{
             }
         }
 
+        public override void whatSalary(string status, LowLevel lowlevel, int rating){
+            base.whatSalary(status, lowlevel, rating);
+
+            if (rating == 1){
+                Console.WriteLine("This is your last warning.");
+            }
+            Console.WriteLine();
+        }
+
     }
 }

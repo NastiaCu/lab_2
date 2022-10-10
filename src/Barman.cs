@@ -14,6 +14,11 @@ namespace c{
             setValues(name, status);
         }
 
+        public override void speak(){
+            base.speak();
+            Console.WriteLine("ОФИЦИАНТ!!!!!!!!!");
+        }
+
         public void makeDrink(Orders orders){
             KeyValuePair<string, int> BarmanServed = orders.chosenDrink;
 

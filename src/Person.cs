@@ -1,10 +1,10 @@
 using System;
 
 namespace c{
-    class Person: Restaurant{
+    abstract class Person: Restaurant, IPerson{
 
         new protected string name;
-        private int workExperience;
+        protected int workExperience;
         private int grade;
         private string greetings;
         protected string status;

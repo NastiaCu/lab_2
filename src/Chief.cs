@@ -35,6 +35,17 @@ namespace c{
 
         }
 
+        public override void speak(){
+            base.speak();
+            
+            if (this.rating == 1){
+            Console.WriteLine("I've got more Michelin stars than the years you've lived on earth, so eat and don't show off");
+            }
 
+            if (this.rating == 2){
+                Console.WriteLine("Enjoy your meal!");
+            }
+
+        }
     }
 }

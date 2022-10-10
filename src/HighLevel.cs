@@ -1,17 +1,17 @@
 using System;
 
 namespace c{
-    class HighLevel: Person{
+    abstract class HighLevel: Person{
 
         public HighLevel(string name, string status): base(name, status){
             setValues(name, status);
         }
-
-        public virtual void whatSalary(string status, Table table, LowLevel lowlevel){
-            if (table.Quality <= 3){
+        
+        public virtual void whatSalary(string status, LowLevel lowlevel, int rating){
+            if (rating == 1){
                 lowlevel.Salary -= 100;
             }
-            else if (table.Quality > 3){
+            else if (rating == 2){
                 lowlevel.Salary +=100;
             }
             Console.WriteLine("The " + status + " got " + lowlevel.Salary);

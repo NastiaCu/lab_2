@@ -1,7 +1,7 @@
 using System;
 
 namespace c{
-    class LowLevel: Person{
+    abstract class LowLevel: Person{
 
         public int num_orders;
         public int rating;
@@ -20,7 +20,7 @@ namespace c{
             set { rating = value; }
         }
 
-        public void qualityCheck(Client client){
+        public void qualityCheck(Client client, string status){
            
             Console.WriteLine("");
             Random rand = new Random();
@@ -28,12 +28,12 @@ namespace c{
             
             if (rating == 1){
                 client.Happiness--;
-                Console.WriteLine("Very bad!");
+                Console.WriteLine(status + " did his work very bad!");
             }
             
             else if (rating == 2){
                 client.Happiness++;
-                Console.WriteLine("Nice!");
+                Console.WriteLine(status + " did his work really nice!");
             }
         }
     }
