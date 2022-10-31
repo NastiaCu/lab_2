@@ -99,6 +99,11 @@ namespace c{
             if (NumOfTables-NumOfClients < 0){
                 return 0;
             }
+
+            else if (NumOfWaiters <= NumOfClients/2){
+                return 0;
+            }
+            
             else return 1;
         }
 
