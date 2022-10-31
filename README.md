@@ -1,7 +1,9 @@
-# lab_4!
+# lab_5!
 > Anastasia Cunev
 
 > FAF-211
+
+In this laboratory work I tried to make a simulation of a restaurant, where different classes can make differen actions and that will have an impact on the simulation. For example, I added the rating and the profit of the restaurant, which will change based on such factors as client's level of happiness, number of clients and tables, and number of clients and waiters. If we will have more tables and waiters in our simulation, the rating and profit will be bigger. We can play with the number of waiters, tables and customers and see what will happen.
 
 The following diagram shows the restaurant system, where `Restaurant` is the root and it has 3 child classes: `Person`, `Menu` and `Table`.
 Class `Person` is the intermediate class, which has the properties for all actors in my system. It also has child classes `HighLevel` and `LowLevel`, which inheritate properties and methods of the class `Person`. 
