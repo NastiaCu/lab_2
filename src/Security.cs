@@ -4,8 +4,12 @@ namespace c{
 
     class Security: HighLevel{
 
-        public Security(string name, string status): base(name , status){
-            setValues(name, status);
+        private Waiter waiter;
+        private Client client;
+
+        public Security(Waiter waiter, Client client): base(waiter, client){
+            this.waiter = waiter;
+            this.client = client;
         }
 
         // public void goHome(Client client){
@@ -18,7 +22,7 @@ namespace c{
         //     }
         // }
 
-        public void washDishes(Client client){
+        public void washDishes(){
             if (client.Money < 0){
                 Console.WriteLine("Now the client has to wash the dishes ");
                 client.Happiness -= 5;

@@ -3,18 +3,36 @@ using System;
 namespace c{
     abstract class HighLevel: Person{
 
-        public HighLevel(string name, string status): base(name, status){
-            setValues(name, status);
+        private Waiter waiter;
+        private Client client;
+
+        public HighLevel(Waiter waiter, Client client){
+            this.waiter = waiter;
+            this.client = client;
         }
         
-        public virtual void whatSalary(string status, LowLevel lowlevel, int rating){
-            if (rating == 1){
-                lowlevel.Salary -= 100;
+        public virtual void whatSalary(LowLevel lowlevel, string status, int rating){
+            if (lowlevel.rating == 1){
+                lowlevel.salary -= 100;
             }
-            else if (rating == 2){
-                lowlevel.Salary +=100;
+
+            else if (lowlevel.rating == 2){
+                lowlevel.salary -= 50;
             }
-            Console.WriteLine("The " + status + " got " + lowlevel.Salary);
+
+            else if (lowlevel.rating == 3){
+                lowlevel.salary += 0;
+            }
+
+            else if (lowlevel.rating == 4){
+                lowlevel.salary += 50;
+            }
+
+            else if (lowlevel.rating == 5){
+                lowlevel.salary += 100;
+            }
+
+            Console.WriteLine("The " + status + " got " + lowlevel.salary);
         } 
         
     }

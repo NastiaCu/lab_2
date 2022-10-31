@@ -2,14 +2,10 @@ using System;
 
 namespace c{
 
-    class Cleaners: LowLevel{
+    class Cleaners{
 
         private int clean;
-        new protected int Salary = 3000;
-
-        public Cleaners(string name, string status): base(name , status){
-            setValues(name, status);
-        }
+        protected int salary = 3000;
         
         public int Clean{
             get { return clean; }

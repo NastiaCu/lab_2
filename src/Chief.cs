@@ -5,7 +5,17 @@ namespace c{
     class Chief: LowLevel{
         private string main;
         private string supplies;
-        new protected int Salary = 5000;
+        new protected int salary = 5000;
+        new private Orders orders;
+        new private Client client; 
+        new public string status;
+        new public int rating = 5;
+
+        public Chief(Client client, Orders orders, string status): base(client, orders, status){
+            this.client = client;
+            this.orders = orders;
+            this.status = status;
+        }
 
         public string Main{
             get { return main; }
@@ -18,11 +28,7 @@ namespace c{
             set { supplies = value; } 
         }
 
-        public Chief(string name, string status): base(name, status){
-            setValues(name, status);
-        }
-
-        public void cook(Orders orders){
+        public void cook(){
 
             KeyValuePair<string, int> chiefCookedMain = orders.chosenMain;
             KeyValuePair<string, int> chiefCookedSup = orders.chosenSup;

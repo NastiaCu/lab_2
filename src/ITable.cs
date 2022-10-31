@@ -3,9 +3,9 @@ using System;
 namespace c{
     interface ITable{
 
-        int table(Client client);
+        int table();
         
-        void TableQuality(Client client);
+        void TableQuality();
 
     }
 }

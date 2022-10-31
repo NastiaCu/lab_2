@@ -2,13 +2,18 @@ using System;
 
 namespace c{
 
-    class Administrator: HighLevel{
+    class Administrator: HighLevel, IAdministrator{
+        private Client client;
+        private Waiter waiter;
+        public int stars = 5;
+        public int NumOfTables = 5;
 
-        public Administrator(string name, string status): base(name, status){
-            setValues(name, status);
+        public Administrator(Waiter waiter, Client client): base(waiter, client){
+            this.waiter = waiter;
+            this.client = client;
         }
         
-        public void grade(Client client, Waiter waiter){
+        public void Grade(){
             Console.WriteLine("");
             if (client.Happiness <= 2){
                 waiter.Grade--;
@@ -20,13 +25,66 @@ namespace c{
             }
         }
 
-        public override void whatSalary(string status, LowLevel lowlevel, int rating){
-            base.whatSalary(status, lowlevel, rating);
+        public void setStatus(){
+        
+            if (client.happiness > 5){
+                stars++;
+            }
+            else if (client.happiness <= 5){
+                stars--;
+            }
 
-            if (rating == 1){
+            Console.WriteLine("The rating of the restaurant is " + stars);
+        }
+
+        public override void whatSalary(LowLevel lowlevel, string status, int rating){
+            base.whatSalary(lowlevel, status, rating);
+
+            if (lowlevel.rating == 1){
                 Console.WriteLine("This is your last warning.");
             }
             Console.WriteLine();
+
+        }
+
+        public void setRaiting(LowLevel lowlevel){
+            Random random = new Random();
+            lowlevel.rating = random.Next(1, 6);
+
+            Console.WriteLine(lowlevel.status + " got rating: " + lowlevel.rating);
+        }
+
+        public void setTable(int NumOfClients){
+            if (NumOfTables >= NumOfClients){
+                Console.WriteLine("Admin: We have free space: " + (NumOfTables - NumOfClients));
+                this.setGrade(2);
+                NumOfTables--;
+            }
+
+            else if (NumOfTables < NumOfClients || NumOfTables == 0){
+                Console.WriteLine("Admin: Sorry, we don't have free tables");
+                this.setGrade(1);
+                this.GoHome(NumOfClients);
+            }
+        }
+
+        public void setGrade(int n){
+            if (n == 1){
+                stars --;
+            }
+            
+            else if (n == 2){
+                stars ++;
+            }
+
+            Console.WriteLine("The rating of the restaurant is " + stars);
+        }
+
+        public int GoHome(int NumOfClients){
+            if (NumOfTables-NumOfClients < 0){
+                return 0;
+            }
+            else return 1;
         }
 
     }

@@ -10,21 +10,24 @@ namespace c{
         protected int Sup;
         protected int Drink;
         public int ToPay;
-        new public int Salary = 4000;
+        new public int salary = 4000;
+        new private Orders orders;
+        new private Client client;
+        new public string status;
+        new public int rating = 5;
 
-
-        public Waiter(string name, string status): base(name, status){
-            name = this.name;
-            setValues(name, status);
+        public Waiter(Client client, Orders orders, string status): base(client, orders, status){
+            this.client = client;
+            this.orders = orders;
+            this.status = status;
         }
-
+        
         public override void speak(){
             base.speak();
             Console.WriteLine("What would you like to order?");
         }
         
-
-        public void bill(Client client, Orders orders){
+        public int bill(){
 
             KeyValuePair<string, int> MainDish = orders.chosenMain;
             KeyValuePair<string, int> Supplies = orders.chosenSup;
@@ -35,8 +38,7 @@ namespace c{
             Drink = DrinkM.Value;
             ToPay = Main + Sup + Drink;
             Console.WriteLine("The total bill is " + ToPay);
-
+            return ToPay;
         }
-
     }
 }

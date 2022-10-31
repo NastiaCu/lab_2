@@ -2,15 +2,17 @@ using System;
 
 namespace c{
 
-    class Client: HighLevel{
+    class Client{
+
+        private Orders orders;
         
         protected int money = 200;
-        protected int happiness = 2;
+        public int happiness = 2;
         protected int num = 3;
         
 
-        public Client(string name, string status): base(name , status){
-            setValues(name, status);
+        public Client(Orders orders){
+            this.orders = orders;
         }
 
         public int Money{
@@ -33,7 +35,7 @@ namespace c{
             Console.WriteLine("remained cash " + money + "$");
         }
 
-        public void choose(Orders orders){
+        public void choose(){
             Console.WriteLine("");
             Console.WriteLine("The client chose: ");
             orders.randomMain();

@@ -1,79 +1,125 @@
 ﻿using System;
 
+
 namespace c{
     
     class Program{
 
         static void Main(){
 
-            Restaurant restaurant = new Restaurant();
-            Menu menu = new Menu();
-            Orders orders = new Orders();
-            Table table = new Table();
+            Random random = new Random();
+            int NumOfDays = 0;
+
+            while (true){
+
+                int Count = 0;
+                int num = 0;
+                
+                Orders orders = new Orders();
+
+                NumOfDays++;
+                int NumOfClients = random.Next(1, 11);
+                int NumOfWaiters = random.Next(1, 7);
+                
+                List<Client> clients = new List<Client>();
+                Restaurant restaurant = new Restaurant();
+                Menu menu = new Menu();
+                
+                restaurant.setValues("NK", "Studencheskaya street");
+                restaurant.printValues();  
+                Console.WriteLine();
             
-        
-            Client client = new Client("Client", "client");
-            Waiter waiter = new Waiter("John", "Waiter");
-            Barman barman = new Barman("Mike", "Barman");
-            Chief chief = new Chief("Luidji", "Chief");
-            Cleaners cleaners = new Cleaners("Galea", "Cleaner");
-            Administrator administrator = new Administrator("IRA", "Administrator");
-            Security secutity = new Security("Calin", "Security");
+                Console.WriteLine("#########################");
+                Console.WriteLine("Number of clients: " + NumOfClients);
+                Console.WriteLine("In day: " + NumOfDays);
+                Console.WriteLine("#########################");
+                
+                menu.createMain();
+                menu.createSup();
+                menu.createDrink();
+                menu.dispMain();
+                menu.dispSup();
+                menu.dispDrink();
 
-            table.table(client);
+                for (int i = 0; i < NumOfClients; i++){
+                    clients.Add(new Client(orders));
+                }
 
-            // table.TableQuality(client);
-            restaurant.setValues("NK", "Studencheskaya street");
-            restaurant.printValues();
-            
-            menu.createMain();
-            menu.createSup();
-            menu.createDrink();
-            menu.dispMain();
-            menu.dispSup();
-            menu.dispDrink();
+                for (int i = 0; i < clients.Count(); i++){
+                    
+                    Client client = clients[i];
+                    Console.WriteLine();
+                    Console.WriteLine("Client number: " + (i+1));
 
-            waiter.speak();
-            client.choose(orders);
-            
-            barman.makeDrink(orders);
-            barman.speak();
-            barman.qualityCheck(client, "Barman");
-            
-            chief.cook(orders);
-            chief.qualityCheck(client, "Chief");
-            chief.speak();
-            
-            waiter.qualityCheck(client, "Waiter");
-            waiter.bill(client, orders);
+                    Table table = new Table(client);                
+                    
+                    Waiter waiter = new Waiter(client, orders, "waiter");
+                    Barman barman = new Barman(client, orders, "barman");
+                    Chief chief = new Chief(client, orders, "chief");
+                    Cleaners cleaners = new Cleaners();
+                    Administrator administrator = new Administrator(waiter, client);
+                    Security secutity = new Security(waiter, client);
 
-            cleaners.qualityCheck(client, "Cleaner");
+                    table.table();
 
-            administrator.speak();
-            administrator.grade(client, waiter);
+                    administrator.setTable(i);
 
-            Console.WriteLine(client.Happiness);
+                    if (administrator.GoHome(i) == 0){
+                        break;
+                    }
 
-            client.pay(waiter.ToPay);
-            secutity.washDishes(client);
-            cleaners.speak();
+                    waiter.workExperienceCheck();
+                    chief.workExperienceCheck();
+                    barman.workExperienceCheck();
 
-            administrator.whatSalary("cleaner", cleaners, cleaners.rating);
-            administrator.whatSalary("waiter", waiter, waiter.rating);
-            administrator.whatSalary("chief", chief, chief.rating);
-            administrator.whatSalary("barman", barman, barman.rating);
+                    waiter.speak();
+                    client.choose();
+                    
+                    barman.makeDrink();
+                    barman.speak();
+                    barman.qualityCheck();
+                    
+                    chief.cook();
+                    chief.qualityCheck();
+                    chief.speak();
+                    
+                    waiter.qualityCheck();
+                    waiter.bill();
 
+                    administrator.Grade();
 
-            Console.WriteLine("");
+                    Console.WriteLine("Client's happiness level: " + client.Happiness);
 
-            table.TableQuality(client);
-            Console.WriteLine(table.quality);
+                    client.pay(waiter.ToPay);
+                    secutity.washDishes();
 
-            
-        
-    
+                    administrator.setRaiting(waiter);
+                    administrator.setRaiting(chief);
+                    administrator.setRaiting(barman);
+
+                    administrator.whatSalary(waiter, "waiter",  waiter.rating);
+                    administrator.whatSalary(chief, "chief", chief.rating);
+                    administrator.whatSalary(barman, "barman", barman.rating);
+
+                    Console.WriteLine("");
+
+                    table.TableQuality();
+                    Console.WriteLine(table.quality);
+                    administrator.setStatus();
+                    
+                    num = administrator.stars;
+
+                    Count += waiter.ToPay;
+                    Console.WriteLine("Today's restaurant's profit is: " + Count);
+                    Console.WriteLine("Number of stars: " + num);   
+
+                    Console.WriteLine();
+                    Console.WriteLine();
+
+                }
+            }
         }
+    }
+} 
 
-    } 
 
-}

@@ -5,10 +5,18 @@ namespace c{
 
         public int num_orders;
         public int rating;
+        new public int grade;
+        public int salary;
+        public Client client;
+        public Orders orders;
+        public string status;
 
-        public LowLevel(string name, string status): base(name, status){
-            setValues(name, status);
+        public LowLevel(Client client, Orders orders, string status){
+            this.client = client;
+            this.orders = orders;
+            this.status = status;
         }
+
 
         public int Num_orders{ 
             get { return num_orders; }
@@ -20,7 +28,17 @@ namespace c{
             set { rating = value; }
         }
 
-        public void qualityCheck(Client client, string status){
+        public int Grade{
+            get { return grade; }
+            set { grade = value; } 
+        }
+
+        public int Salary{
+            get { return salary; }
+            set { salary = value; }
+        }
+
+        public void qualityCheck(){
            
             Console.WriteLine("");
             Random rand = new Random();
@@ -35,6 +53,10 @@ namespace c{
                 client.Happiness++;
                 Console.WriteLine(status + " did his work really nice!");
             }
+        }
+
+        public virtual void speak(){
+            Console.WriteLine("I am the " + status + " in this restaurant! ");
         }
     }
 }
