@@ -19,7 +19,6 @@ namespace c{
 
                 NumOfDays++;
                 int NumOfClients = random.Next(1, 11);
-                int NumOfWaiters = random.Next(1, 7);
                 
                 List<Client> clients = new List<Client>();
                 Restaurant restaurant = new Restaurant();
@@ -63,6 +62,7 @@ namespace c{
                     table.table();
 
                     administrator.setTable(i);
+                    administrator.setWaiters(i);
 
                     if (administrator.GoHome(i) == 0){
                         break;

@@ -3,10 +3,12 @@ using System;
 namespace c{
 
     class Administrator: HighLevel, IAdministrator{
+
         private Client client;
         private Waiter waiter;
         public int stars = 5;
         public int NumOfTables = 5;
+        public int NumOfWaiters = 2;
 
         public Administrator(Waiter waiter, Client client): base(waiter, client){
             this.waiter = waiter;
@@ -63,6 +65,19 @@ namespace c{
 
             else if (NumOfTables < NumOfClients || NumOfTables == 0){
                 Console.WriteLine("Admin: Sorry, we don't have free tables");
+                this.setGrade(1);
+                this.GoHome(NumOfClients);
+            }
+        }
+
+        public void setWaiters(int NumOfClients){
+            if (NumOfWaiters > NumOfClients/2){
+                Console.WriteLine("Today the restaurant will earn a lot of money");
+                this.setGrade(2);
+            }
+
+            else if (NumOfWaiters <= NumOfClients/2){
+                Console.WriteLine("We don't have enought hands");
                 this.setGrade(1);
                 this.GoHome(NumOfClients);
             }
