@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 
 namespace c{
@@ -115,8 +116,10 @@ namespace c{
 
                     Console.WriteLine();
                     Console.WriteLine();
-
                 }
+                
+                TimeSpan timeout = new TimeSpan(0, 0, 3);
+                Thread.Sleep(timeout);
             }
         }
     }
